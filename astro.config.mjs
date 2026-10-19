@@ -6,6 +6,10 @@ import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
 export default defineConfig({
+	// GitHub Pages 项目站点部署在 /ShouminGeneralist/ 子路径下，
+	// 必须设置 base，否则 CSS/JS/图片等静态资源会指向根路径而 404。
+	base: '/ShouminGeneralist/',
+	site: 'https://shoumingeneralist.github.io',
 	markdown: {
 		// Astro 7 默认用 Sätteri 处理器，它不跑 rehype 插件，所以这里显式切到 unified
 		// （@astrojs/markdown-remark），再把 rehype-external-links 挂上去。
