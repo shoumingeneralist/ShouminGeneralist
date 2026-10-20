@@ -6,9 +6,11 @@ import { unified } from '@astrojs/markdown-remark';
 
 // https://astro.build/config
 export default defineConfig({
-	// GitHub Pages 项目站点部署在 /ShouminGeneralist/ 子路径下，
-	// 必须设置 base，否则 CSS/JS/图片等静态资源会指向根路径而 404。
-	base: '/ShouminGeneralist/',
+	// 站点同时部署到 GitHub Pages 与 Cloudflare Pages，两者都用根路径：
+	//   - GitHub Pages：仓库已重命名为 shoumingeneralist.github.io（用户页），自动在根目录。
+	//   - Cloudflare Pages：默认根目录。
+	// 默认 base 为 '/'；如需切回子路径部署，可设置环境变量 BASE 覆盖，例如 BASE=/ShouminGeneralist/。
+	base: process.env.BASE || '/',
 	site: 'https://shoumingeneralist.github.io',
 	markdown: {
 		// Astro 7 默认用 Sätteri 处理器，它不跑 rehype 插件，所以这里显式切到 unified
