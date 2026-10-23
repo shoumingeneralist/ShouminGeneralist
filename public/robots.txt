@@ -1,11 +1,12 @@
-# https://shoumingeneralist.github.io/robots.txt
+# https://shoumingeneralist.pages.dev/robots.txt
 #
-# 规范域名（canonical）为 https://shoumingeneralist.github.io
-# 备用域名 https://shoumingeneralist.pages.dev 已配置 301 跳转至本站，
+# 规范域名（canonical）为 https://shoumingeneralist.pages.dev
+# 备用域名 https://shoumingeneralist.github.io 部署的是同一份内容，
+# 但页面里的 <link rel="canonical"> 统一指向 pages.dev，
 # 因此这里只需要声明规范域名的站点地图。
 
 User-agent: *
 Allow: /
 
 # 站点地图
-Sitemap: https://shoumingeneralist.github.io/sitemap-index.xml
+Sitemap: https://shoumingeneralist.pages.dev/sitemap-index.xml

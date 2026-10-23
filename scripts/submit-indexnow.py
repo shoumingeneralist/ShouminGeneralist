@@ -25,11 +25,11 @@ import urllib.request
 
 # ---------------------------------------------------------------- 配置
 
-SITE = "https://shoumingeneralist.github.io"
+SITE = "https://shoumingeneralist.pages.dev"
 SITEMAP_INDEX = SITE + "/sitemap-index.xml"
 
 # IndexNow 密钥。对应的验证文件必须放在站点根目录：
-#   https://shoumingeneralist.github.io/2ed358c114b046318942c07080a48729.txt
+#   https://shoumingeneralist.pages.dev/2ed358c114b046318942c07080a48729.txt
 # 文件内容就是密钥本身（UTF-8 无 BOM，不带换行）。
 KEY = "2ed358c114b046318942c07080a48729"
 KEY_LOCATION = SITE + "/" + KEY + ".txt"
