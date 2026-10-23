@@ -1,0 +1,11 @@
+# https://shoumingeneralist.github.io/robots.txt
+#
+# 规范域名（canonical）为 https://shoumingeneralist.github.io
+# 备用域名 https://shoumingeneralist.pages.dev 已配置 301 跳转至本站，
+# 因此这里只需要声明规范域名的站点地图。
+
+User-agent: *
+Allow: /
+
+# 站点地图
+Sitemap: https://shoumingeneralist.github.io/sitemap-index.xml

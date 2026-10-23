@@ -34,9 +34,45 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: '守民通识',
-			description: '无偿分享近 20 年研发实战经验，覆盖机械、电机控制、电子、软硬件、计算机等领域。深耕家电头部企业， 80 余项专利，持续跨领域学习。秉持知识无界，属于人类共同资产的理念，以通识研发为方向，关注新知识新技术积累。AI 飞速发展，可辅助完成大量工作，但研发并非知识填鸭，重在练习内化、转化为自身能力。愿大家保有自主学习、独立思考的能力，以知识共共享，不断学习，推动共同进步。',
+			// 控制在 150 字以内：搜索引擎摘要通常截断到 155 字符左右，
+			// 太长会被切掉，且品牌名「守民通识」必须出现在最前面。
+			description:
+				'守民通识：无偿分享近 20 年跨领域研发实战经验，覆盖机械、电机控制、电子、软硬件与计算机，深耕家电头部企业，持有 80 余项专利，倡导自主学习与独立思考。',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/shoumingeneralist' }],
-			
+
+			// 结构化数据：把「守民通识」作为明确的实体告诉搜索引擎，
+			// 有助于 Google / Bing 建立站点实体认知（知识面板、站点名称展示）。
+			head: [
+				{
+					tag: 'script',
+					attrs: { type: 'application/ld+json' },
+					content: JSON.stringify({
+						'@context': 'https://schema.org',
+						'@graph': [
+							{
+								'@type': 'WebSite',
+								'@id': 'https://shoumingeneralist.github.io/#website',
+								url: 'https://shoumingeneralist.github.io/',
+								name: '守民通识',
+								description:
+									'无偿分享近 20 年跨领域研发实战经验，覆盖机械、电机控制、电子、软硬件与计算机。以通识研发为方向，关注新知识新技术积累。',
+								inLanguage: 'zh-CN',
+								publisher: { '@id': 'https://shoumingeneralist.github.io/#organization' },
+							},
+							{
+								'@type': 'Organization',
+								'@id': 'https://shoumingeneralist.github.io/#organization',
+								name: '守民通识',
+								alternateName: ['守民通识 Shoumin Generalist'],
+								url: 'https://shoumingeneralist.github.io/',
+								logo: 'https://shoumingeneralist.github.io/favicon.svg',
+								sameAs: ['https://github.com/shoumingeneralist'],
+							},
+						],
+					}),
+				},
+			],
+
 			 // 将网站默认语言设置为简体中文
       locales: {
         root: {
