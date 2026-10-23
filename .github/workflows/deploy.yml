@@ -48,3 +48,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # 发布完成后，把 sitemap 里的全部 URL 主动推送给搜索引擎（IndexNow）。
+  # 不推送的话，新页面只能等爬虫自然发现，通常要几天到几周。
+  #
+  # 覆盖：Bing、Yandex、Naver、Seznam、Yep，
+  # 以及复用 Bing 索引的 ChatGPT Search / Copilot / DuckDuckGo。
+  # 百度不支持 IndexNow，需要在 ziyuan.baidu.com 单独提交（见 SUBMIT_GUIDE.md）。
+  #
+  # 独立 job：推送失败不会把上面的部署标记为失败。
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Push URLs to search engines
+        run: python3 scripts/submit-indexnow.py
